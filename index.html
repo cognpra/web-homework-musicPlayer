@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>音乐在线播放网站 - 24215220210</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-blue">
+  <div id="backgroundLayer" class="background-layer"></div>
+  <div id="backgroundMask" class="background-mask"></div>
+  <main class="page-shell">
+    <header class="page-header">
+      <div class="student-info">学号：24215220210　姓名：谭影月</div>
+      <div class="title-block">
+        <div class="logo-mark">♪</div>
+        <div>
+          <h1>音乐在线播放网站</h1>
+        </div>
+      </div>
+      <div class="header-tools" aria-label="播放器工具栏">
+        <label class="search-box" for="songSearch">
+          <span>搜索</span>
+          <input id="songSearch" type="search" placeholder="输入歌曲名或歌手" autocomplete="off" />
+        </label>
+        <label class="theme-picker" for="themeSelect">
+          <span>主题</span>
+          <select id="themeSelect">
+            <option value="blue">蓝色</option>
+            <option value="purple">紫色</option>
+            <option value="green">绿色</option>
+            <option value="amber">暖橙</option>
+          </select>
+        </label>
+        <button id="togglePlaylistBtn" class="header-button" type="button">收起播放列表</button>
+      </div>
+    </header>
+
+    <section id="mainLayout" class="main-layout">
+      <article class="album-panel glass-card">
+        <div class="disc-wrap" id="discWrap">
+          <img id="cover" src="assets/img/record0.jpg" alt="歌曲封面" />
+        </div>
+        <div class="song-info">
+          <h2 id="songTitle">浮萍</h2>
+          <p id="songArtist">演唱：云汐</p>
+          <button id="favoriteBtn" class="favorite-button icon-only" type="button" aria-pressed="false" title="收藏" aria-label="收藏当前歌曲">♡</button>
+        </div>
+      </article>
+
+      <article class="lyrics-panel glass-card">
+        <div class="section-head">
+          <span>歌词显示</span>
+          <small id="playStateText">当前未播放</small>
+        </div>
+        <div id="lyricsList" class="lyrics-list" aria-label="歌词列表">
+          <p class="active" data-time="0">浮萍随水轻轻转，映着半池微光。</p>
+          <p data-time="24">风从水面掠过，留下细碎的声响。</p>
+          <p data-time="48">一片叶影漂来，又慢慢漂向远方。</p>
+          <p data-time="72">心事不必停靠，顺着旋律流淌。</p>
+          <p data-time="96">清浅的波纹里，藏着片刻安静。</p>
+          <p data-time="120">夜色落下之前，把梦交给水乡。</p>
+          <p data-time="144">浮萍没有归处，却也不曾慌张。</p>
+          <p data-time="168">音乐继续向前，像河面慢慢发亮。</p>
+        </div>
+      </article>
+
+      <aside class="playlist-panel glass-card" id="playlistPanel">
+        <div class="section-head">
+          <span>播放列表</span>
+          <small>点击歌曲切换</small>
+        </div>
+        <ul id="playlist" class="playlist">
+          <li class="active" data-index="0"><span class="cover-thumb"><img src="assets/img/record0.jpg" alt="封面" /><em class="favorite-mark" aria-label="已收藏">♥</em></span><div><strong>浮萍</strong><small>云汐</small></div><span>播放中</span></li>
+          <li data-index="1"><span class="cover-thumb"><img src="assets/img/record1.jpg" alt="封面" /></span><div><strong>边草</strong><small>北叶</small></div><span>选择</span></li>
+          <li data-index="2"><span class="cover-thumb"><img src="assets/img/record2.jpg" alt="封面" /></span><div><strong>脆枝</strong><small>远山</small></div><span>选择</span></li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <footer id="playerBar" class="player-bar expanded">
+    <div class="player-inner">
+      <div class="now-playing">
+        <span class="mini-cover-wrap"><img id="miniCover" src="assets/img/record0.jpg" alt="当前歌曲封面" /><small id="miniFavoriteState" class="mini-favorite-state" aria-hidden="true"></small></span>
+        <div>
+          <strong id="miniTitle">浮萍</strong>
+          <span id="miniArtist">云汐</span>
+        </div>
+      </div>
+
+      <div class="bottom-control">
+        <div class="control-row">
+          <button id="prevBtn" class="icon-button" type="button" title="上一曲" aria-label="上一曲">⏮</button>
+          <button id="playBtn" class="play-main icon-button" type="button" title="播放或暂停" aria-label="播放或暂停">▶</button>
+          <button id="nextBtn" class="icon-button" type="button" title="下一曲" aria-label="下一曲">⏭</button>
+        </div>
+        <label class="collapse-volume" for="collapseVolume">音量
+          <input id="collapseVolume" type="range" min="0" max="1" step="0.01" value="0.8" />
+          <span id="collapseVolumeValue">80%</span>
+        </label>
+        <div class="progress-row">
+          <button id="currentTime" class="time-button" type="button" title="点击修改播放位置">00:00</button>
+          <input id="progress" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度" />
+          <span id="duration" class="time-text">00:00</span>
+        </div>
+      </div>
+
+      <div class="bottom-tools">
+        <button id="modeSwitchBtn" class="mode-switch" data-mode="order" type="button" title="当前：顺序播放，点击切换" aria-label="当前：顺序播放，点击切换播放模式">
+          <span id="modeSwitchIcon" aria-hidden="true">→</span>
+        </button>
+        <label class="tool-slider" for="volume"><span class="slider-name">音量</span>
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" />
+          <span id="volumeValue" class="slider-value">80%</span>
+        </label>
+        <label class="tool-slider speed-slider" for="speedControl"><span class="slider-name">播放速度</span>
+          <input id="speedControl" type="range" min="0.5" max="2" step="0.1" value="1" />
+          <span id="speedValue" class="slider-value">1.0倍</span>
+        </label>
+      </div>
+
+      <button id="togglePlayerBtn" type="button" class="player-arrow" title="收起播放器" aria-label="收起播放器"></button>
+    </div>
+  </footer>
+
+  <audio id="audio" preload="metadata"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
